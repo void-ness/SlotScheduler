@@ -1,0 +1,29 @@
+{
+  "name": "slotscheduler",
+  "version": "1.0.0",
+  "description": "a service to book slots for counselling",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/void-ness/SlotScheduler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/void-ness/SlotScheduler/issues"
+  },
+  "homepage": "https://github.com/void-ness/SlotScheduler#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
