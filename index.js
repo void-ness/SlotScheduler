@@ -1,17 +1,16 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const createError = require('http-errors')
-
-require('dotenv').config();
+const dotenv = require('dotenv').config();
 
 const app = express();
 
 app.use(express.json());
 
 // initialise database
-mongoose.connect('mongodb://localhost:27017/UserSlots').then(() => {
+mongoose.connect(process.env.mongodb_URI).then(() => {
     console.log('mongoDB connected....');
-})
+}).catch(err => console.log(err.message));
 
 const UserRoute = require('./Routes/User.route.js');
 app.use('/users', UserRoute)
@@ -33,6 +32,6 @@ app.use((err, req, res, next) => {
     });
 })
 
-app.listen(3000, () => {
-    console.log("server started")
+app.listen(process.env.PORT || 3000, () => {
+    console.log("server started on port: ", process.env.PORT);
 })

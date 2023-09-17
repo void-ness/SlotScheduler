@@ -3,3 +3,6 @@
 
 # dev api testing files
 /*.http
+
+#env variables
+.env
