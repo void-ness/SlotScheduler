@@ -8,7 +8,7 @@ router.get('/all', authenticateUser, SlotController.getAllSlots);
 
 router.get('/available', authenticateUser, SlotController.getAvailableSlots);
 
-router.post('/pending', authenticateUser, SlotController.getPendingSlots);
+router.get('/pending', authenticateUser, SlotController.getPendingSlots);
 
 router.post('/', authenticateUser, SlotController.addSlot);
 

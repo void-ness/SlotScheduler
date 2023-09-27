@@ -11,23 +11,24 @@ const SlotScehma = new Schema({
         required: true,
     },
     "orgPerson": {
-        type: String,
+        type: {
+            "name": String,
+            "univId": Number,
+        },
         required: true,
     },
     "booked": {
         type: Boolean,
         required: true,
     },
-    "bookerName": {
-        type: String,
+    "booker": {
+        type: {
+            "name": String,
+            "univId": Number,
+        },
         required: false,
         default: null,
     },
-    "bookerID": {
-        type: Number,
-        required: false,
-        default: null,
-    }
 })
 
 const SlotModel = mongoose.model('slots', SlotScehma);

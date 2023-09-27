@@ -8,8 +8,7 @@ const getAvailableSlots = async (req, res, next) => {
         const result = await Slot.find({ booked: false, date: { $gt: new Date() } }, {
             __v: 0,
             booked: 0,
-            bookerName: 0,
-            bookerID: 0
+            booker: 0,
         });
 
         res.send(result);
@@ -23,8 +22,7 @@ const bookaSlot = async (req, res, next) => {
         const id = req.body.slotID;
         const options = { new: true };
         const update = {
-            bookerName: req.body.name,
-            bookerID: req.user.id,
+            booker: { "name": req.body.name, "univId": req.user.id },
             booked: true
         }
 
@@ -49,7 +47,7 @@ const getPendingSlots = async (req, res, next) => {
     try {
         const result = await Slot.find({
             booked: true,
-            orgPerson: req.body.name,
+            "orgPerson.univId": req.user.id,
             date: { $gt: Date() }
         }, { __v: 0 })
 
@@ -101,7 +99,7 @@ const addSlot = async (req, res, next) => {
         const slot = new Slot({
             date: new Date(`${req.body.date} ${req.body.time}`),
             duration: req.body.duration,
-            orgPerson: req.body.name,
+            orgPerson: { "name": req.body.name, "univId": req.user.id },
             booked: false,
         });
 
